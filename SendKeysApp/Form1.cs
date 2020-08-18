@@ -43,8 +43,6 @@ namespace SendKeysApp
 
         private void SendMessage(string ip)
         {
-            bool exception_thrown = false;
-
             Socket sending_socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,
 ProtocolType.Udp);
             IPAddress send_to_address = IPAddress.Parse(ip);
@@ -58,17 +56,7 @@ ProtocolType.Udp);
             }
             catch (Exception send_exception)
             {
-                exception_thrown = true;
                 Console.WriteLine(" Exception {0}", send_exception.Message);
-            }
-            if (exception_thrown == false)
-            {
-                Console.WriteLine("Message has been sent to the broadcast address");
-            }
-            else
-            {
-                exception_thrown = false;
-                Console.WriteLine("The exception indicates the message was not sent.");
             }
         }
     }
